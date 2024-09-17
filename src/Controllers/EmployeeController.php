@@ -5,7 +5,7 @@ class EmployeeController
 {
     private $employees;
     private $employeeModel;
-
+    
 
     public function __construct()
     {
@@ -14,6 +14,17 @@ class EmployeeController
 
     public function index()
     {
-        $this->employees=$this->employeeModel->all();
+      return  $this->employees=$this->employeeModel->all();
     }
+    public function store($fname,$lname,$salary,$image,$manager_id)
+    {
+        $this->employeeModel->addEmployees($fname,$lname,$salary,$image,$manager_id);
+    }
+}
+
+
+if(isset($_POST['add']))
+{
+    $emp=new EmployeeController;
+    $emp->store($_POST['fname'],$_POST['lname'],$_POST['salary'],$_POST['image'],$_POST['manager_id']);
 }

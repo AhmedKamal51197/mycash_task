@@ -20,4 +20,9 @@ class Employee {
         $data = $this->con->query("select * from employees");
         return $data->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function addEmployees($employeeFname, $employeeLname,$salary,$image,$manager_id){
+        $stmt=$this->con->prepare('insert into employees(fname,lname,salary,image,manager_id)  values(?,?,?,?,?)');
+        $stmt->execute([$employeeFname, $employeeLname, $salary, $image,$manager_id]);
+    }
+
 }

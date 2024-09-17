@@ -30,3 +30,28 @@
     </thead>
     <?php 
     require_once "../../Models/Employee.php";
+    require_once "../../Controllers/EmployeeController.php";
+    $employee= new EmployeeController;
+    $emps = $employee->index();
+    echo "<tbody>";
+    foreach($emps as $emp)
+    {
+        echo "<tr>";
+        foreach($emp as $key=>$val)
+        {
+            if($key=='image')
+            {
+                echo "<td><img src='.../../EmployeeImage/$val' width='50' hight='50'></td>";
+            }
+            else
+              {
+                echo "<td>$val</td>";
+              }
+        }
+        echo "<td>
+            <a class='btn btn-primary' href='AddEmployee.php'>Add</a>
+            <a class='btn btn-warning' href= 'EditEmployee.php?id={$emp['id']}'>edit</a>
+            <a class='btn btn-danger' href='DeleteEmployee.php?id={$emp['id']}'>delete</a>
+        </td>";
+
+    }
