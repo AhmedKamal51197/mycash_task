@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Sep 17, 2024 at 07:39 AM
+-- Generation Time: Sep 18, 2024 at 10:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,17 +40,25 @@ CREATE TABLE `departments` (
 
 CREATE TABLE `employees` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
   `salary` double DEFAULT NULL,
-  `iamge` varchar(255) DEFAULT NULL,
-  `dept_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `image` varchar(255) DEFAULT NULL,
+  `manager_id` int(11) DEFAULT NULL,
+  `dept_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `fname`, `lname`, `salary`, `image`, `manager_id`, `dept_id`) VALUES
+(1, 'ahmed', 'kamal', 3000, '21.PNG', NULL, NULL),
+(2, 'ahmed', 'kamal', 5555, '19.PNG', 1, NULL),
+(3, 'ahmed', 'kamal', 5555, '19.PNG', 1, NULL),
+(4, 'kareem', 'hassan', 5000, '23.PNG', 2, NULL),
+(5, 'ali', 'gaber', 2000, '22.PNG', 4, NULL),
+(6, 'ali', 'gaber', 5200, '20.PNG', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -109,7 +117,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
